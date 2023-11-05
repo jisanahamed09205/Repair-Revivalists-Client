@@ -1,8 +1,7 @@
 
 const Services = () => {
     return (
-        <div className=" max-w-[1200px] mx-auto bg-green-100">
-            This is services
+        <div className=" max-w-[1200px] mx-auto ">
             <div className="w-80 p-4 bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out mx-auto">
                 <img className="w-full h-40 object-cover rounded-t-lg" alt="Card Image" src="/Toyota3.jpg" />
                 <div className="p-4">
