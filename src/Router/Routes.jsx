@@ -5,11 +5,13 @@ import Services from "../Pages/Services/Services";
 import MyServices from "../Pages/Dashboard/MyServices";
 import AddServices from "../Pages/Dashboard/AddServices";
 import MySchedules from "../Pages/Dashboard/MySchedules";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout></MainLayout>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
             path:'/',
