@@ -4,7 +4,7 @@ import Footer from "../Pages/Footer/Footer";
 
 const MainLayout = () => {
     return (
-        <div>
+        <div className="font-Manrope">
             <Navbar></Navbar>
             <div>
                 <Outlet></Outlet>
