@@ -4,7 +4,7 @@ const Footer = () => {
         <div>
             <footer className="footer p-10 bg-neutral text-neutral-content">
                 <aside>
-                    <a href="/" className="flex items-center font-bold normal-case text-2xl"><img width="200" height="200" src='logo2.png' alt="" /></a>
+                    <a href="/" className="flex items-center font-bold normal-case text-2xl"><img width="200" height="200" src='/logo2.png' alt="" /></a>
                 </aside>
                 <nav>
                     <header className="footer-title">Social</header>

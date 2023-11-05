@@ -20,9 +20,9 @@ const Navbar = () => {
     </>
     const navlinks2 = <>
         <div className=" flex flex-col gap-5">
-            <NavLink className='btn btn-ghost btn-sm'>My-services</NavLink>
-            <NavLink className='btn btn-ghost btn-sm'>Add-services</NavLink>
-            <NavLink className='btn btn-ghost btn-sm'>My-schedules</NavLink>
+            <NavLink to='/myServices' className='btn btn-ghost btn-sm'>My-services</NavLink>
+            <NavLink to='/addServices' className='btn btn-ghost btn-sm'>Add-services</NavLink>
+            <NavLink to='/mySchedules' className='btn btn-ghost btn-sm'>My-schedules</NavLink>
         </div>
     </>
 
@@ -45,7 +45,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <a href="/" className=" normal-case text-xl">
-                        <img src="logo3.png" alt="" />
+                        <img src="/logo3.png" alt="" />
                     </a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
