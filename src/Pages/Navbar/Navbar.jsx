@@ -20,9 +20,9 @@ const Navbar = () => {
     </>
     const navlinks2 = <>
         <div className=" flex flex-col gap-5">
-            <NavLink to='/myServices' className='btn btn-ghost btn-sm'>My-services</NavLink>
-            <NavLink to='/addServices' className='btn btn-ghost btn-sm'>Add-services</NavLink>
-            <NavLink to='/mySchedules' className='btn btn-ghost btn-sm'>My-schedules</NavLink>
+            <NavLink to='/myServices' className={({ isActive })=>isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'}>My-services</NavLink>
+            <NavLink to='/addServices' className={({ isActive })=>isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'}>Add-services</NavLink>
+            <NavLink to='/mySchedules' className={({ isActive })=>isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'}>My-schedules</NavLink>
         </div>
     </>
 

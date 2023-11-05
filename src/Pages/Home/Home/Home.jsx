@@ -2,6 +2,7 @@ import Services from "../../Services/Services";
 import Banner from "../Banner/Banner";
 import FAQ from "../FAQ/FAQ";
 import Location from "../Location/Location";
+import Review from "../Review/Review";
 
 const Home = () => {
     return (
@@ -19,6 +20,7 @@ const Home = () => {
             </div>
             <FAQ></FAQ>
             <Location></Location>
+            <Review></Review>
         </div>
     );
 };
