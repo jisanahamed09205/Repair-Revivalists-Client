@@ -4,8 +4,8 @@ const Footer = () => {
         <div>
             <footer className="footer p-10 bg-neutral text-neutral-content">
                 <aside>
-                    <a className="flex items-center font-bold normal-case text-2xl"><img width="200" height="200" src='logo.png' alt="" /></a>
-                    <p>AutoMarqueHub Ltd.<br />Providing reliable tech since 1992</p>
+                    <a className="flex items-center font-bold normal-case text-2xl"><img width="200" height="200" src='logo2.png' alt="" /></a>
+                    <p>RepairRevivalists Ltd.<br /> since 1999</p>
                 </aside>
                 <nav>
                     <header className="footer-title">Social</header>
@@ -18,7 +18,7 @@ const Footer = () => {
             </footer>
             <footer className="footer footer-center p-4 bg-neutral text-neutral-content">
                 <aside>
-                    <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+                    <p>Copyright © 2023 - All right reserved by RepairRevivalists Ltd</p>
                 </aside>
             </footer>
         </div>

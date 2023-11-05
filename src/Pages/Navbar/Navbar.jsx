@@ -20,9 +20,9 @@ const Navbar = () => {
     </>
     const navlinks2 = <>
         <div className=" flex flex-col gap-5">
-            <NavLink>My-services</NavLink>
-            <NavLink>Add-services</NavLink>
-            <NavLink>My-schedules</NavLink>
+            <NavLink className='btn btn-ghost btn-sm'>My-services</NavLink>
+            <NavLink className='btn btn-ghost btn-sm'>Add-services</NavLink>
+            <NavLink className='btn btn-ghost btn-sm'>My-schedules</NavLink>
         </div>
     </>
 
