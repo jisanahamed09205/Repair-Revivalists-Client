@@ -6,6 +6,9 @@ import MyServices from "../Pages/Dashboard/MyServices";
 import AddServices from "../Pages/Dashboard/AddServices";
 import MySchedules from "../Pages/Dashboard/MySchedules";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Register from "../Pages/Register/Register";
+import Login from "../Pages/Login/Login";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -19,7 +22,7 @@ const router = createBrowserRouter([
         },
         {
             path:'/services',
-            element: <Services></Services>
+            element: <PrivateRoute><Services></Services></PrivateRoute>
         },
         {
             path:'/myServices',
@@ -32,6 +35,14 @@ const router = createBrowserRouter([
         {
             path:'/mySchedules',
             element: <MySchedules></MySchedules>
+        },
+        {
+          path:'register',
+          element:<Register></Register>
+        },
+        {
+          path: 'login',
+          element: <Login></Login>
         }
       ]
     },
