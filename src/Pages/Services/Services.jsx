@@ -13,6 +13,7 @@ const Services = () => {
                                 <img src="/avatar.png" alt="" />
                             </div>
                             <h6>Name</h6>
+                            {/* <p><small>California,Usa</small></p> */}
                         </div>
                         <div className="rating rating-sm">
                             <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />
@@ -22,6 +23,7 @@ const Services = () => {
                             <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />
                         </div>
                     </div>
+                    <p><small>California,Usa</small></p>
                     <h6>Price: $778</h6>
                     <div className="flex justify-between items-center mt-4">
                         <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400">Learn More</button>

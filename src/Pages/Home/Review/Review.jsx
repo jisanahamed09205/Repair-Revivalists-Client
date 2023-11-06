@@ -6,7 +6,7 @@ const Review = () => {
                 <div className="container flex flex-col items-center mx-auto mb-12 md:p-10 md:px-12">
                     <h1 className="p-4 text-xl md:text-3xl lg:text-5xl font-semibold leadi text-center">What our customers are saying about us</h1>
                 </div>
-                <div className="container flex flex-col items-center justify-center mx-auto lg:flex-row lg:flex-wrap lg:justify-evenly lg:px-10">
+                <div className="container flex flex-col items-center justify-center mx-auto lg:flex-row lg:flex-wrap lg:justify-evenly lg:px-10 font-Playpen">
                     <div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg bg-green-100">
                         <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 dark:bg-gray-900">
                             <p className="relative px-6 py-1 text-lg italic text-center dark:text-gray-100">
