@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import ServicesCard from "./ServicesCard";
 import { useState } from "react";
 
@@ -6,44 +6,58 @@ const Services = () => {
 
     const serviceData = useLoaderData();
 
-
     const [dataLength,setDataLength] = useState(4)
+    const [allData,setAllData] =useState(serviceData)
+    const [searched,setSearched] = useState(serviceData);
+
+
+    const handleServiceName = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const search = form.search.value;
+        if(search.length) {
+            const filterCard = allData.filter(
+                (card) => card.service_name.toLowerCase() == search.toLowerCase()
+            );
+            if(filterCard){
+                setSearched(filterCard);
+            }
+        }
+        else{
+            setSearched(allData);
+        }
+    };
+
+    const handleInputChange = (e) => {
+        const search = e.target.value;
+        if (!search.length) {
+            setSearched(allData);
+        }
+    };
+
 
     return (
         <div className=" max-w-[1200px] mx-auto pt-4 ">
+            <form onSubmit={handleServiceName} className=" my-5">
+                <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div className="relative">
+                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        </svg>
+                    </div>
+                    <input type="search" name="search" id="default-search" className="block w-full p-4 pl-10 text-sm text-gray-900  border-2 border-red-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Find Services..." onChange={handleInputChange} required />
+                    <button type="submit" className="text-white absolute right-2.5 bottom-2.5 bg-green-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                </div>
+            </form>
+
+
             <div className="text-center">
                 <h2 className=" font-bold text-4xl">Our Services</h2>
             </div>
-            {/* <div className="w-80 p-4 bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out mx-auto">
-                <img className="w-full h-40 object-cover rounded-t-lg" alt="Card Image" src="/Toyota3.jpg" />
-                <div className="p-4">
-                    <h2 className="text-xl  font-semibold">Beautiful Card</h2>
-                    <p className="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quis ante sit amet tellus ornare tincidunt.</p>
-                    <div className="flex justify-between items-center">
-                        <div className="avatar placeholder">
-                            <div className="bg-neutral-focus  rounded-full w-8 mr-2">
-                                <img src="/avatar.png" alt="" />
-                            </div>
-                            <h6>Name</h6>
-                        </div>
-                        <div className="rating rating-sm">
-                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />
-                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" checked />
-                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />
-                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />
-                            <input type="radio" name="rating-4" className="mask mask-star-2 bg-green-500" />
-                        </div>
-                    </div>
-                    <p><small>California,Usa</small></p>
-                    <h6>Price: $778</h6>
-                    <div className="flex justify-between items-center mt-4">
-                        <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400">Learn More</button>
-                    </div>
-                </div>
-            </div> */}
             <div className='grid grid-cols-1 md:grid-cols-2'>
                 {
-                    serviceData.slice(0,dataLength).map((service)=> <ServicesCard key={service._id} service={service}></ServicesCard>)
+                    searched.slice(0,dataLength).map((service)=> <ServicesCard key={service._id} service={service}></ServicesCard>)
                 }
             </div>
             <div className={dataLength === serviceData.length && 'hidden'}>
