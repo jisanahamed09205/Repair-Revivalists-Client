@@ -28,7 +28,7 @@ const ServicesCard = ({service}) => {
                     </div>
                     <p><small>{service_area}</small></p>
                     <h6>Price: {service_price}</h6>
-                    <Link to={`/details/${_id}`}>
+                    <Link to={`/serviceDetails/${_id}`}>
                         <div className="flex justify-between items-center mt-4">
                             <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400">ViewDetails</button>
                         </div>
