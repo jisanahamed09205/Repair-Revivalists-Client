@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
-const ServicesCard = ({service}) => {
+const PopularServices = ({popularData}) => {
 
-    const {_id,service_name,service_img,service_description,service_provider_name,service_provider_img,service_price,service_area} =service;
+    const {_id,service_name,service_img,service_description,service_provider_name,service_provider_img,service_price,service_area} =popularData;
 
     return (
         <div>
-            <div className="w-96 p-4 bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out mx-auto my-5">
+             <div className="w-96 p-4 bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out mx-auto my-5">
                 <img className="w-full h-40 object-cover rounded-t-lg" alt="Card Image" src={service_img} />
                 <div className="p-4">
                     <h2 className="text-xl  font-semibold">{service_name}</h2>
@@ -39,4 +39,4 @@ const ServicesCard = ({service}) => {
     );
 };
 
-export default ServicesCard;
+export default PopularServices;

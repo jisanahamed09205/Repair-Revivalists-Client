@@ -1,16 +1,33 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 // import Services from "../../Services/Services";
 import Banner from "../Banner/Banner";
 import FAQ from "../FAQ/FAQ";
 import Location from "../Location/Location";
 import Review from "../Review/Review";
+import PopularServices from "./PopularServices";
+import { useState } from "react";
 
 const Home = () => {
+
+    const popularDatas = useLoaderData()
+
+    const [dataLength,setDataLength] = useState(4)
+
     return (
         <div>
             <Banner></Banner>
             {/* <Services></Services> */}
-            <div className="text-center">
+            <div>
+                <div className="text-center pt-4">
+                    <h2 className=" font-bold text-4xl">Popular Services</h2>
+                </div>
+                <div className='grid grid-cols-1 md:grid-cols-2'>
+                    {
+                        popularDatas.slice(0,dataLength).map((popularData)=> <PopularServices key={popularData._id} popularData={popularData}></PopularServices>)
+                    }
+                </div>
+            </div>
+            <div className="text-center my-5">
                 <Link to='/services'
                     className="inline-flex justify-center items-center gap-x-3 text-center bg-gradient-to-tl from-blue-600 to-violet-600 shadow-lg shadow-transparent hover:shadow-blue-700/50 border border-transparent text-white text-sm font-medium rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white py-3 px-6 dark:focus:ring-offset-gray-800" href="#">
                     Show All
