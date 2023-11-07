@@ -34,9 +34,9 @@ const Navbar = () => {
             user?.email ? <div className="dropdown dropdown-bottom">
             <label tabIndex={0} className="btn btn-ghost btn-sm">Dashboard</label>
             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                <NavLink to='/myServices' className={({ isActive })=>isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'}>My-services</NavLink>
-                <NavLink to='/addServices' className={({ isActive })=>isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'}>Add-services</NavLink>
-                <NavLink to='/mySchedules' className={({ isActive })=>isActive ? 'btn btn-primary btn-sm' : 'btn btn-ghost btn-sm'}>My-schedules</NavLink>
+                <NavLink to='/manageServices' className={({ isActive })=>isActive ? 'btn btn-primary btn-sm normal-case' : 'btn btn-ghost btn-sm normal-case'}>Manage-services</NavLink>
+                <NavLink to='/addServices' className={({ isActive })=>isActive ? 'btn btn-primary btn-sm normal-case' : 'btn btn-ghost btn-sm normal-case'}>Add-service</NavLink>
+                <NavLink to='/mySchedules' className={({ isActive })=>isActive ? 'btn btn-primary btn-sm normal-case' : 'btn btn-ghost btn-sm normal-case'}>My-schedules</NavLink>
             </ul>
         </div> : ""
         }

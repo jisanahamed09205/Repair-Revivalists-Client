@@ -1,4 +1,8 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { useContext } from "react";
+import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
+import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 const Details = () => {
 
@@ -6,14 +10,62 @@ const Details = () => {
 
     const {_id,service_name,service_img,service_description,service_provider_name,service_provider_img,service_price,service_area,details} =detailsData;
 
+    const {user} = useContext(AuthContext);
+
+    const handlePurchase = e =>{
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const userEmail = user?.email;
+        const date = form.date.value;
+        const area = form.area.value;
+        const providerEmail = form.providerEmail.value;
+        const price = form.price.value;
+        const imgURL = form.imgURL.value;
+        const booking ={
+            name,
+            userEmail,
+            date,
+            area,
+            providerEmail,
+            price,
+            imgURL,
+            service_id: _id
+        }
+        // console.log(booking);
+
+        fetch('http://localhost:5000/bookings',{
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            if(data.insertedId){
+                // swal("Purchased!", "Service Purchased Successfully!", "success")
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Service Purchased Successfully",
+                    showConfirmButton: false,
+                    timer: 2000
+                  });
+            }
+        })
+    }
+
     return (
         <div>
             <article className="max-w-2xl px-6 py-24 mx-auto space-y-12 dark:bg-gray-800 dark:text-gray-50">
-                <div className=" card lg:card-side bg-base-100 shadow-xl">
+                <div className=" card bg-base-100 shadow-xl">
                     <figure className=""><img src={service_img} alt="Album" /></figure>
                     <div className="card-body w-full">
                         <h2 className="card-title">Service Name: {service_name}</h2>
                         <p>Price: {service_price}</p>
+                        <div><span className="text-xl font-semibold underline">Service Description:</span> {details}</div>
                         <div className="card-actions justify-end">
                             {/* You can open the modal using document.getElementById('ID').showModal() method */}
                             <button className="btn btn-info" onClick={() => document.getElementById('my_modal_3').showModal()}>Book Now</button>
@@ -23,22 +75,24 @@ const Details = () => {
                                         {/* if there is a button in form, it will close the modal */}
                                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                     </form>
-                                    <h2 className=" text-3xl text-center">Book Service</h2>
+                                    <h2 className=" text-3xl text-center">Purchase Service</h2>
                                     <section className="text-gray-600 body-font relative">
                                         <div className="container px-5 py-5 mx-auto ">
                                             <div className=" mx-auto">
-                                                <form className="">
+                                                <form onSubmit={handlePurchase}>
                                                     <div className="flex flex-wrap -m-2">
                                                         <div className="p-2 w-1/2">
                                                             <div className="relative">
                                                                 <label className="leading-7 text-sm text-gray-600">Service Name</label>
-                                                                <input disabled type="text" id="name" defaultValue='{user?.displayName}' name="name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                                <input disabled type="text" id="name" defaultValue={service_name} name="name" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                                             </div>
                                                         </div>
                                                         <div className="p-2 w-1/2">
                                                             <div className="relative">
                                                                 <label className="leading-7 text-sm text-gray-600">User Email</label>
-                                                                <input disabled type="email" id="phn" name="userEmail" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                                <input disabled 
+                                                                defaultValue={user?.email}
+                                                                type="email" id="phn" name="userEmail" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                                             </div>
                                                         </div>
                                                         <div className="p-2 w-1/2">
@@ -50,29 +104,29 @@ const Details = () => {
                                                         <div className="p-2 w-1/2">
                                                             <div className="relative">
                                                                 <label className="leading-7 text-sm text-gray-600">Area</label>
-                                                                <input type="text" id="" name="area" defaultValue="{'$' + price}" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                                <input type="text" id="" name="area" defaultValue={service_area} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                                             </div>
                                                         </div>
                                                         <div className="p-2 w-1/2">
                                                             <div className="relative">
                                                                 <label className="leading-7 text-sm text-gray-600">Service Provider Email</label>
-                                                                <input disabled defaultValue='{user?.email}' type="email" id="providerEmail" name="providerEmail" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                                <input disabled defaultValue='provider@gmail.com' type="email" id="providerEmail" name="providerEmail" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                                             </div>
                                                         </div>
                                                         <div className="p-2 w-1/2">
                                                             <div className="relative">
                                                                 <label className="leading-7 text-sm text-gray-600">Price</label>
-                                                                <input disabled type="text" id="" name="price" defaultValue="{'$' + price}" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                                <input disabled type="text" id="" name="price" defaultValue={service_price} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                                             </div>
                                                         </div>
                                                         <div className="p-2 w-full">
                                                             <div className="relative">
                                                                 <label className="leading-7 text-sm text-gray-600">Service Img</label>
-                                                                <input disabled type="text" id="" name="price" defaultValue="{'$' + price}" className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                                                <input disabled type="text" id="" name="imgURL" defaultValue={service_provider_img} className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                                                             </div>
                                                         </div>
-                                                        <div className="p-2 w-full">
-                                                            <input className="btn btn-primary w-full" type="submit" value="Purchase Service" />
+                                                        <div className="p-2 w-full ">
+                                                            <input className="btn btn-primary w-full normal-case" type="submit" value="Purchase Service" />
                                                         </div>
                                                     </div>
                                                 </form>
@@ -84,7 +138,7 @@ const Details = () => {
                         </div>
                     </div>
                 </div>
-                <div><span className="text-xl font-semibold underline">Service Description:</span> {details}</div>
+                {/* <div><span className="text-xl font-semibold underline">Service Description:</span> {details}</div> */}
 
                 {/* there start provider info */}
                 <div className="pt-12 border-t dark:border-gray-700">
