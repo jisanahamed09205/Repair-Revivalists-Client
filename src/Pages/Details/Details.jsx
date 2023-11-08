@@ -1,14 +1,13 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
-import swal from "sweetalert";
 import Swal from "sweetalert2";
 
 const Details = () => {
 
     const detailsData= useLoaderData();
 
-    const {_id,service_name,service_img,service_description,service_provider_name,service_provider_img,service_price,service_area,details} =detailsData;
+    const {_id,service_name,service_img,service_provider_name,service_provider_img,service_price,service_area,details} =detailsData;
 
     const {user} = useContext(AuthContext);
 

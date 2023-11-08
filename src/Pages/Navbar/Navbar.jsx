@@ -69,8 +69,8 @@ const Navbar = () => {
                 user ?
                     <div className="navbar-end gap-5">
                         <div className="flex flex-col items-center mx-3">
-                            <img className="w-[50px] rounded-full" src={user.photoURL} alt="" />
-                            <p className=" font-medium text-center">{user.displayName}</p>
+                            <img className="w-[50px] rounded-full" src={user?.photoURL} alt="" />
+                            <p className=" font-medium text-center">{user?.displayName}</p>
                         </div>
                         <button onClick={handleSignOut} className="btn normal-case">LogOut</button>
                     </div> : 
