@@ -1,3 +1,5 @@
+import { Typewriter } from 'react-simple-typewriter'
+
 
 const Banner = () => {
     return (
@@ -11,12 +13,23 @@ const Banner = () => {
                     <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-8">
                         {/* Title */}
                         <div className="max-w-3xl text-center mx-auto">
-                            <h1 
+                            {/* <h1 
                             data-aos="fade-right"
                             data-aos-offset="300"
                             data-aos-easing="ease-in-sine"
                             className="block font-[500] text-gray-200 text-4xl sm:text-xl md:text-3xl lg:text-5xl font-Playpen">
-                            Revitalize, Repair, and Reconnect: Join Our Community Repair Workshops!
+                            
+                            </h1> */}
+                            <h1 className="block font-[500] text-gray-200 text-4xl sm:text-xl md:text-3xl lg:text-5xl font-Playpen" style={{ color: '', fontWeight: '' }}>
+                                <Typewriter
+                                    words={['Revitalize, Repair, and Reconnect: Join Our Community Repair Workshops!']}
+                                    loop={5}
+                                    cursor
+                                    cursorStyle='_'
+                                    typeSpeed={70}
+                                    deleteSpeed={50}
+                                    delaySpeed={1000}
+                                />
                             </h1>
                         </div>
                         {/* End Title */}
