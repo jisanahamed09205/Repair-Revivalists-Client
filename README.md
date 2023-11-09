@@ -3,7 +3,7 @@
 # Writhing About my Assignment Project !
 
 **Home Page:** This section deals with the content and layout of the home page.
-It includes a beautiful banner/slider to make the page visually appealing.
+It includes a beautiful banner to make the page visually appealing.
 There's a section for displaying popular services with details like Service Image, Name, Description, View Detail Button, Service Provider Image & Name, and Service Price.
 Additionally, there's a "Show All" button that redirects users to the All Services page.
 
