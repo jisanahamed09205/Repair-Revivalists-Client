@@ -3,6 +3,7 @@ import './Login.css'
 import { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import swal from 'sweetalert';
+// import axios from 'axios';
 
 const Login = () => {
 
@@ -21,11 +22,24 @@ const Login = () => {
         //login user
         login(email,password)
         .then(result=>{
-            console.log(result.user);
+            const loggedInUser = result.user
+            console.log(loggedInUser);
+            // const user = {email};
+
+
             swal("Successful!", "Your Login Success!", "success")
 
 
+            //NEEd to UNCOMMET
             navigate(location?.state ? location.state : '/');
+
+
+
+            //get access token
+            // axios.post('http://localhost:5000/jwt',user, {withCredentials:true})
+            // .then(res=>{
+            //     console.log(res.data);
+            // })
 
         })
 
@@ -38,6 +52,11 @@ const Login = () => {
         signInWithGoogle()
         .then(result=>{
             console.log(result.user);
+            swal("Successful!", "Your Login Success!", "success")
+
+
+            navigate(location?.state ? location.state : '/');
+
         })
         .catch(error=>{
             console.error(error)

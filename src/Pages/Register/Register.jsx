@@ -58,9 +58,10 @@ const Register = () => {
             update(name,photo)
             .then()
             .catch()
-            {location.state ? navigate(location.state) : navigate('/')}
-            location.reload()
-            {location.state ? navigate(location.state) : navigate('/')}
+            navigate(location?.state ? location.state : '/');
+            // {location.state ? navigate(location.state) : navigate('/')}
+            // location.reload()
+            // {location.state ? navigate(location.state) : navigate('/')}
 
             //update profile
             // updateProfile(result.user, {
@@ -79,6 +80,9 @@ const Register = () => {
         signInWithGoogle()
         .then(result=>{
             console.log(result.user);
+            swal("Successful!", "Your Login Success!", "success")
+            // {location.state ? navigate(location.state) : navigate('/')}
+            navigate(location?.state ? location.state : '/');
         })
         .catch(error=>{
             console.error(error)
