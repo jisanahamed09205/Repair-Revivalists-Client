@@ -35,7 +35,7 @@ const UpdateService = () => {
                 service_img
             }
             // send data to the database server
-            fetch(`http://localhost:5000/updatedService/${_id}`,{
+            fetch(`https://repair-revivalists-server.vercel.app/updatedService/${_id}`,{
                 method: 'PUT',
                 headers:{
                     'content-type': 'application/json'

@@ -37,7 +37,7 @@ const Login = () => {
 
 
             //get access token
-            // axios.post('http://localhost:5000/jwt',user, {withCredentials:true})
+            // axios.post('https://repair-revivalists-server.vercel.app/jwt',user, {withCredentials:true})
             // .then(res=>{
             //     console.log(res.data);
             // })

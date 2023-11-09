@@ -33,7 +33,7 @@ const AddServices = () => {
             service_img,
         }
         // send data to the database server
-        fetch('http://localhost:5000/addService',{
+        fetch('https://repair-revivalists-server.vercel.app/addService',{
             method: 'POST',
             headers:{
                 'content-type': 'application/json'

@@ -21,17 +21,17 @@ const router = createBrowserRouter([
         {
             path:'/',
             element: <Home></Home>,
-            loader: () => fetch('http://localhost:5000/services')
+            loader: () => fetch('https://repair-revivalists-server.vercel.app/services')
         },
         {
             path:'/services',
             element: <Services></Services>,
-            loader: () => fetch('http://localhost:5000/services')
+            loader: () => fetch('https://repair-revivalists-server.vercel.app/services')
         },
         {
             path:'/manageServices',
             element: <PrivateRoute><ManageServices></ManageServices></PrivateRoute>,
-            loader: () => fetch('http://localhost:5000/services')
+            loader: () => fetch('https://repair-revivalists-server.vercel.app/services')
         },
         {
             path: '/addServices',
@@ -52,12 +52,12 @@ const router = createBrowserRouter([
         {
           path: '/serviceDetails/:id',
           element: <PrivateRoute><Details></Details></PrivateRoute>,
-          loader: ({params})=>fetch(`http://localhost:5000/serviceDetails/${params.id}`)
+          loader: ({params})=>fetch(`https://repair-revivalists-server.vercel.app/serviceDetails/${params.id}`)
         },
         {
           path: '/updateService/:id',
           element: <UpdateService></UpdateService>,
-          loader: ({params})=>fetch(`http://localhost:5000/updateService/${params.id}`)
+          loader: ({params})=>fetch(`https://repair-revivalists-server.vercel.app/updateService/${params.id}`)
         }
       ]
     },
