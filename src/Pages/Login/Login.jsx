@@ -3,6 +3,7 @@ import './Login.css'
 import { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import swal from 'sweetalert';
+import { Helmet } from 'react-helmet-async';
 // import axios from 'axios';
 
 const Login = () => {
@@ -23,7 +24,7 @@ const Login = () => {
         login(email,password)
         .then(result=>{
             const loggedInUser = result.user
-            console.log(loggedInUser);
+            // console.log(loggedInUser);
             // const user = {email};
 
 
@@ -51,7 +52,7 @@ const Login = () => {
     const handleGoogleSignIn = () =>{
         signInWithGoogle()
         .then(result=>{
-            console.log(result.user);
+            // console.log(result.user);
             swal("Successful!", "Your Login Success!", "success")
 
 
@@ -65,6 +66,9 @@ const Login = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200" style={{backgroundImage: 'url(/loginbg.svg)'}}>
+            <Helmet>
+                <title>Repair Revivalists || Login</title>
+            </Helmet>
             <div className="container-login">
                 <div className="heading">Sign In</div>
                 <form onSubmit={handleLogin} className="form" action>

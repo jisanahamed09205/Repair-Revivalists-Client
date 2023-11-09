@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import swal from "sweetalert";
 import { AuthContext } from "../Provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const AddServices = () => {
 
@@ -41,7 +42,7 @@ const AddServices = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-            console.log(data);
+            // console.log(data);
             if(data.insertedId){
                 swal("Added!", "Service Added Successfully!", "success")
                 form.reset();
@@ -51,6 +52,9 @@ const AddServices = () => {
 
     return (
         <div className="bg-green-100">
+            <Helmet>
+                <title>Repair Revivalists || Add Service</title>
+            </Helmet>
             <h2 className=" text-3xl text-center py-5">Add Service</h2>
             <section className="text-gray-600 body-font relative">
                 <div className="container px-5 py-5 mx-auto ">

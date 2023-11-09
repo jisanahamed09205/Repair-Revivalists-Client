@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Details = () => {
 
@@ -42,7 +43,7 @@ const Details = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-            console.log(data);
+            // console.log(data);
             if(data.insertedId){
                 // swal("Purchased!", "Service Purchased Successfully!", "success")
                 Swal.fire({
@@ -58,6 +59,9 @@ const Details = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Service Details: {_id}</title>
+            </Helmet>
             <article className="max-w-2xl px-6 py-24 mx-auto space-y-12 dark:bg-gray-800 dark:text-gray-50">
                 <div className=" card bg-base-100 shadow-xl">
                     <figure className=""><img src={service_img} alt="Album" /></figure>

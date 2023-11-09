@@ -3,6 +3,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { FcGoogle } from 'react-icons/fc';
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -52,7 +53,7 @@ const Register = () => {
         //create user
         createUser(email,password)
         .then(result =>{
-            console.log(result.user);
+            // console.log(result.user);
             swal("Successful!", "Your Registration Success!", "success")
 
             update(name,photo)
@@ -79,7 +80,7 @@ const Register = () => {
     const handleGoogleSignIn = () =>{
         signInWithGoogle()
         .then(result=>{
-            console.log(result.user);
+            // console.log(result.user);
             swal("Successful!", "Your Login Success!", "success")
             // {location.state ? navigate(location.state) : navigate('/')}
             navigate(location?.state ? location.state : '/');
@@ -91,6 +92,9 @@ const Register = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Repair Revivalists || Register</title>
+            </Helmet>
             <div className=' flex justify-center items-center py-5' style={{backgroundImage: 'url(/loginbg.svg)'}}>
                 <div className="text-white relative flex flex-col rounded-xl bg-transparent bg-clip-border shadow-none">
                     <h4 className="block font-sans text-2xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased text-white">

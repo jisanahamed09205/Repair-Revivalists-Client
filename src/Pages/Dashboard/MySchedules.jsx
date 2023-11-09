@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import BookingRow from "./BookingRow/BookingRow";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const MySchedules = () => {
 
@@ -33,7 +34,7 @@ const MySchedules = () => {
             })
             .then(res=> res.json())
             .then(data=>{
-                console.log(data);
+                // console.log(data);
                 if(data.deletedCount > 0){
                     Swal.fire({
                         title: "Deleted!",
@@ -58,7 +59,7 @@ const MySchedules = () => {
         })
         .then(res=>res.json())
         .then(data=>{
-            console.log(data);
+            // console.log(data);
             if(data.modifiedCount > 0){
                 //update state
                 const remaining = bookings.filter(book=>book._id !==id);
@@ -72,6 +73,9 @@ const MySchedules = () => {
 
     return (
         <div className=" max-w-[1200px] mx-auto bg-green-50">
+            <Helmet>
+                <title>Repair Revivalists || My Schedules</title>
+            </Helmet>
             <h2 className="text-3xl">My bookings: {bookings.length}</h2>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">

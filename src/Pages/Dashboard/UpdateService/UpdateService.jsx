@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import swal from "sweetalert";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const UpdateService = () => {
 
@@ -43,7 +44,7 @@ const UpdateService = () => {
             })
             .then(res=>res.json())
             .then(data=>{
-                console.log(data);
+                // console.log(data);
                 if(data.modifiedCount > 0){
                     swal("Updated!", "Service Updated Successfully!", "success")
                 }
@@ -52,6 +53,9 @@ const UpdateService = () => {
 
     return (
         <div className="bg-green-100">
+            <Helmet>
+                <title>Service Update: {_id}</title>
+            </Helmet>
             <h2 className=" text-3xl text-center py-5">Update Service</h2>
             <section className="text-gray-600 body-font relative">
                 <div className="container px-5 py-5 mx-auto ">

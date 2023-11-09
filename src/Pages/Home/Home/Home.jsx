@@ -6,6 +6,7 @@ import Location from "../Location/Location";
 import Review from "../Review/Review";
 import PopularServices from "./PopularServices";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
 
@@ -15,6 +16,9 @@ const Home = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Repair Revivalists || Home</title>
+            </Helmet>
             <Banner></Banner>
             {/* <Services></Services> */}
             <div>

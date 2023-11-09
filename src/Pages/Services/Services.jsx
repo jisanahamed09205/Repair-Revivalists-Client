@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import ServicesCard from "./ServicesCard";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const Services = () => {
 
@@ -38,6 +39,9 @@ const Services = () => {
 
     return (
         <div className=" max-w-[1200px] mx-auto pt-4 ">
+            <Helmet>
+                <title>Repair Revivalists || Services</title>
+            </Helmet>
             <form onSubmit={handleServiceName} className=" my-5">
                 <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div className="relative">

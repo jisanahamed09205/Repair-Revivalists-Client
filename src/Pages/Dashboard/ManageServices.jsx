@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import ManageServiceCard from "./ManageServiceCard/ManageServiceCard";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const ManageServices = () => {
 
@@ -10,6 +11,9 @@ const ManageServices = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Repair Revivalists || Manage Services</title>
+            </Helmet>
             <div className="text-center py-5">
                 <h2 className=" font-bold text-4xl">Manage Services</h2>
             </div>
