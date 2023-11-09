@@ -42,6 +42,7 @@ const ManageServiceCard = ({service,servicesData,setServicesData}) => {
     return (
         <div>
             <div className="w-96 p-4 bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out mx-auto my-5">
+                {/* framer motion */}
                 <img className="w-full h-40 object-cover rounded-t-lg" alt="Card Image" src={service_img} />
                 <div className="p-4">
                     <h2 className="text-xl  font-semibold">{service_name}</h2>

@@ -6,6 +6,7 @@ const PopularServices = ({popularData}) => {
 
     return (
         <div>
+            {/* framer motion */}
              <div className="w-96 p-4 bg-white rounded-lg shadow-md transform hover:scale-105 transition-transform duration-300 ease-in-out mx-auto my-5">
                 <img className="w-full h-40 object-cover rounded-t-lg" alt="Card Image" src={service_img} />
                 <div className="p-4">
